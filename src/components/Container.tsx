@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FC } from "react";
 import styled from "styled-components";
 
-type ContainerType = 'section' | 'article' | 'div';
+type ContainerType = 'section' | 'article' | 'div'
 
 interface ContainerProps {
     verticalPadding?: string;
@@ -9,7 +9,7 @@ interface ContainerProps {
     type?: ContainerType;
 }
 
-const Container: React.FC<ContainerProps> = ({
+const Container: FC<ContainerProps> = ({
   verticalPadding,
   horizontalPadding = "2rem",
   type = "section",
@@ -26,10 +26,12 @@ const Container: React.FC<ContainerProps> = ({
   );
 };
 
-const Wrapper = styled.div<Pick<ContainerProps, 'horizontalPadding' | 'verticalPadding'>>`
+const Wrapper = styled.div<Pick<ContainerProps, 'verticalPadding' | 'horizontalPadding'>>`
   padding: 0
     ${({ horizontalPadding }) => horizontalPadding && horizontalPadding};
-    border: 1px solid ${({ theme }) => theme.colors.default}; 
+
+  border: 5px solid ${({ theme }) => theme.colors.default};
+  border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
 export default Container;
